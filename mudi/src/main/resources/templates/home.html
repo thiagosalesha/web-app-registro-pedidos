@@ -6,14 +6,24 @@
 <title>Início</title>
 </head>
 <body>
-		<div class="container py-4">
+		<div class="container py-2">
 				<div class="row align-items-md-stretch">
 					<div class="col-md-12">		
 						<div class="h-100 p-5 text-bg-dark rounded-3">
 							<h2>Change the background</h2>
 						</div>
-					</div>	
+					</div>
 				</div>
+				
+									
+					<nav class="navbar bg-light rounded-3">
+					  <form class="container-fluid justify-content-start">
+					    <button class="btn btn-sm btn-outline-secondary p-2" style="margin-right: 10px" type="button">Todos</button>
+					    <button class="btn btn-sm btn-outline-secondary p-2" style="margin-right: 10px" type="button">Aguardando</button>
+					    <button class="btn btn-sm btn-outline-secondary p-2" style="margin-right: 10px" type="button">Aprovado</button>
+					    <button class="btn btn-sm btn-outline-secondary p-2" style="margin-right: 10px" type="button">Entregue</button>
+					  </form>
+					</nav>	
 		</div>	
 		
 		<div class="container p-3">
@@ -24,10 +34,14 @@
 						<div class="card-body">
 							<div class="row g-5">
 								<div class="col-md-8">
-										<div>
-										
-										Valor: <span th:text="${pedido.valor}">200,99</span>
-										
+										<div class="row mb-3">
+											<div class="col-md-3">
+												Valor: <span th:text="${pedido.valor}">200,99</span>
+											</div>
+												
+											<div class="col-md-9">
+												Data da Entrega: <span th:text="${pedido.dataEntrega}"></span>
+											</div>
 										</div>
 										
 										<div class="mb-2">
