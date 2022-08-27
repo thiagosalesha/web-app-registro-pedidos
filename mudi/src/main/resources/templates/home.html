@@ -2,24 +2,55 @@
 <html>
 <head>
 <meta charset="UTF-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <title>Início</title>
 </head>
 <body>
-	<div th:each="pedido : ${lista}">
-		<div th:text="${pedido.nomeProd}">Nome do Produto</div>
-		<div>Valor: <span th:text="${pedido.valor}">200,99</span></div>
+		<div class="container py-4">
+				<div class="row align-items-md-stretch">
+					<div class="col-md-12">		
+						<div class="h-100 p-5 text-bg-dark rounded-3">
+							<h2>Change the background</h2>
+						</div>
+					</div>	
+				</div>
+		</div>	
 		
-		<div>Produto</div>
-		<div th:text="${pedido.urlProd}">url do produto</div> 
-		
-		<div>Descrição</div>
-		<div>
-			<textarea th:text="${pedido.descProd}">Descrição do Produto</textarea>
-		</div>
-		
-		<div>
-			<img th:src="${pedido.urlImg}" alt="imagem do produto" src="">
-		</div>
-	</div>
-</body>
+		<div class="container p-3">
+			<div class="card mb-3" th:each="pedido : ${lista}">					
+						<div class="card-header"  th:text="${pedido.nomeProd}">
+						</div>
+						
+						<div class="card-body">
+							<div class="row g-5">
+								<div class="col-md-8">
+										<div>
+										
+										Valor: <span th:text="${pedido.valor}">200,99</span>
+										
+										</div>
+										
+										<div class="mb-2">
+											<label for="urlProd" class="form-label">Produto</label>
+											<input th:value="${pedido.urlProd}" class="form-control" id="urlProd" placeholder="Insira a url do produto...">
+										</div>
+										
+										<div class="mb-3">
+											<label for="descProd" class="form-label">Descrição</label>
+											<textarea class="form-control" id="descProd" th:text="${pedido.descProd}"></textarea>							
+										</div>
+								</div>	
+									
+							    
+							    
+							    <div class="col-md-4">
+							    	<div class="card p-3">
+							      		<img th:src="${pedido.urlImg}" src="" class="img-fluid rounded-start" alt="imagem do produto">
+							    	</div>	
+							    </div>
+						   		
+						   </div>
+						</div>
+					</div>
+			</div>
 </html>

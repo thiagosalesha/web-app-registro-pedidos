@@ -22,7 +22,7 @@ public class HomeController {
 		pedido.setUrlImg("https://images-americanas.b2w.io/produtos/01/00/item/131017/5/131017515SZ.jpg");
 		pedido.setValor(new BigDecimal(1190));
 		
-		List<Pedido> lista = Arrays.asList(pedido);
+		List<Pedido> lista = Arrays.asList(pedido, pedido, pedido);
 		model.addAttribute("lista", lista);
 		return "home";
 	}
