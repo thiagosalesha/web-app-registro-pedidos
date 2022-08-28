@@ -3,16 +3,17 @@ package br.com.salesha.mvc.mudi.dto;
 import javax.validation.constraints.NotBlank;
 
 import br.com.salesha.mvc.mudi.model.Pedido;
+import br.com.salesha.mvc.mudi.model.StatusPedido;
 
 public class CadastroNovoProd {
 	
-	@NotBlank
+	@NotBlank(message = "Campo Obrigatório!") 
 	private String nmProd;
 	
-	@NotBlank
+	@NotBlank(message = "Campo Obrigatório!")
 	private String urlProd;
 
-	@NotBlank
+	@NotBlank(message = "Campo Obrigatório!") 
 	private String imgProd;
 	private String dscProd;
 	
@@ -22,6 +23,7 @@ public class CadastroNovoProd {
 		pedido.setUrlProd(this.urlProd);
 		pedido.setUrlImg(this.imgProd);
 		pedido.setDescProd(this.dscProd);
+		pedido.setStatusPedido(StatusPedido.APROVADO);
 	
 		return pedido;
 		

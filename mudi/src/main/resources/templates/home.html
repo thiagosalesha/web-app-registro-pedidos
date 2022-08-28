@@ -34,9 +34,11 @@
 		
 		<div class="container p-3">
 			<div class="card mb-3" th:each="pedido : ${lista}">					
-						<div class="card-header"  th:text="${pedido.nomeProd}">
-						</div>
-						
+						<th:block th:switch=${pedido.statusPedido.name()}>
+							<div th:case="'APROVADO'" class="card-header alert alert-success"  th:text="${pedido.nomeProd}"></div>
+							<div th:case="'ENTREGUE'" class="card-header alert alert-primary"  th:text="${pedido.nomeProd}"></div>
+							<div th:case="'AGUARDANDO'" class="card-header alert alert-warning"  th:text="${pedido.nomeProd}"></div>
+						</th:block>
 						<div class="card-body">
 							<div class="row g-5">
 								<div class="col-md-8">
