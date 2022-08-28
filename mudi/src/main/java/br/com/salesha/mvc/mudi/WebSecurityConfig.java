@@ -14,13 +14,17 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class WebSecurityConfig {
 	
+	
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
 			.anyRequest().authenticated()
 			.and()
-			.httpBasic();
+			.formLogin(form -> form
+					.loginPage("/login")
+					.permitAll()
+					);
 		
 		
 		return http.build();
