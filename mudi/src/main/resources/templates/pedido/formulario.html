@@ -32,17 +32,20 @@
 			  		<form th:object="${cadastroNovoProd}" action="/pedido/cadastrar" method="post">
 				   		<div class="mb-2">
 							<label for="nmProd" class="form-label">Nome do Produto</label>
-							<input th:field="*{nmProd}" class="form-control" name="nmProd" id="nmProd" placeholder="Insira o nome do produto...">
+							<input th:field="*{nmProd}" th:errorclass="is-invalid" class="form-control"  name="nmProd" id="nmProd" placeholder="Insira o nome do produto...">
+							<div class="invalid-feedback" th:errors="*{nmProd}"></div>
 						</div>
 						  
 				   		<div class="mb-2">
 							<label for="urlProd" class="form-label">URL do Produto</label>
-							<input th:field="*{urlProd}" class="form-control" name="urlProd" id="urlProd" placeholder="Insira a url do produto...">
+							<input th:field="*{urlProd}" th:errorclass="is-invalid" class="form-control" name="urlProd" id="urlProd" placeholder="Insira a url do produto...">
+							<div class="invalid-feedback" th:errors="*{urlProd}"></div>						
 						</div>
 											
 				   		<div class="mb-2">
 							<label for="imgProd" class="form-label">URL do Produto</label>
-							<input th:field="*{imgProd}"  class="form-control" name="imgProd" id="imgProd" placeholder="Insira a url da imagem do produto...">
+							<input th:field="*{imgProd}" th:errorclass="is-invalid" class="form-control" name="imgProd" id="imgProd" placeholder="Insira a url da imagem do produto...">
+							<div  class="invalid-feedback" th:errors="*{imgProd}"></div>						
 						</div>
 											
 				   		<div class="mb-2">
