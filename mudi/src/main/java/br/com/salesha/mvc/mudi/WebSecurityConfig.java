@@ -23,7 +23,7 @@ public class WebSecurityConfig {
 			.httpBasic();
 		
 		
-		return null;
+		return http.build();
 	}
 	
 	@Bean

@@ -1,0 +1,8 @@
+<div th:fragment="logo" class="px-3 py-2 text-bg-dark logo-container mb-3 p-2 d-flex justify-content-between">
+	<span style="font-family: 'Handlee', cursive;  color: #FFFFFF; font-size: 30px">mudi</span>
+	<span style="margin-top: 10px; font-family: 'Handlee', cursive;  color: #FFFFFF; font-size: 14px">
+	
+		<a sec:authorize="!isAuthenticated()" href="/login">Login</a>
+		<a sec:authorize="isAuthenticated()" href="#">Logout</a>
+	</span>
+</div>
