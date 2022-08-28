@@ -48,7 +48,7 @@
 											</div>
 												
 											<div class="col-md-9">
-												Data da Entrega: <span th:text="${pedido.dataEntrega}"></span>
+												Data da Entrega: <span th:text="${#temporals.format(pedido.dataEntrega, 'dd/MM/yyyy')}"></span>
 											</div>
 										</div>
 										
