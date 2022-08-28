@@ -44,7 +44,7 @@
 								<div class="col-md-8">
 										<div class="row mb-3">
 											<div class="col-md-3">
-												Valor: <span th:text="${pedido.valor}">200,99</span>
+												Valor: <span th:text="${'R$ ' + #numbers.formatDecimal(pedido.valor,3,'POINT',2,'COMMA')}">200,99</span>
 											</div>
 												
 											<div class="col-md-9">
