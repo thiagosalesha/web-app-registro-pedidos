@@ -1,7 +1,10 @@
 package br.com.salesha.mvc.mudi.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -17,12 +20,16 @@ public class PedidoController {
 	
 	
 	@GetMapping("pedido/formulario")
-	public String novo() {
+	public String novo(CadastroNovoProd cadastro) {
 		return "pedido/formulario";
 	}
 	
 	@PostMapping("pedido/cadastrar")
-	public String cadastrar(CadastroNovoProd cadastro) {
+	public String cadastrar(@Valid CadastroNovoProd cadastro, BindingResult result) {
+		if(result.hasErrors()) {
+			System.out.println("Entrou em hasErrors");
+			return "pedido/formulario";
+		}
 		
 		System.out.println(cadastro.getDscProd());
 		Pedido pedido = cadastro.toPedido();

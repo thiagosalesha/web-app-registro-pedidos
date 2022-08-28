@@ -1,10 +1,18 @@
 package br.com.salesha.mvc.mudi.dto;
 
+import javax.validation.constraints.NotBlank;
+
 import br.com.salesha.mvc.mudi.model.Pedido;
 
 public class CadastroNovoProd {
+	
+	@NotBlank
 	private String nmProd;
+	
+	@NotBlank
 	private String urlProd;
+
+	@NotBlank
 	private String imgProd;
 	private String dscProd;
 	
