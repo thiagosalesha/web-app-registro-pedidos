@@ -1,23 +1,55 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
-	<head>
-		<title>Login</title>
+<html>
+	<head th:replace="~{base :: head('Login')}">
 	</head>
+	
 	<body>
-		<div th:replace="~{base :: logo}"></div>
-		<h1>Please Log In</h1>
-		<div th:if="${param.error}">
-			Invalid username and password.</div>
-		<div th:if="${param.logout}">
-			You have been logged out.</div>
-		<form th:action="@{/login}" method="post">
-			<div>
-			<input type="text" name="username" placeholder="Username"/>
+
+	<div th:replace="~{base :: logo}"></div>
+
+		<!-- 
+		<header>
+			<div class="px-3 py-2 text-bg-dark">mudi
 			</div>
-			<div>
-			<input type="password" name="password" placeholder="Password"/>
+		</header>
+		
+		 -->	
+		<div class="container py-2">
+			<div class="row align-items-md-stretch">
+				<div class="col-md-12">		
+					<div class="h-100 p-5 text-bg-dark rounded-3">
+						<h2>Login</h2>
+					</div>
+				</div>
 			</div>
-			<input type="submit" value="Log in" />
-		</form>
+		</div>
+		
+		<div class="container">
+			
+			<div class="card">
+			<!-- 
+			  <div class="card-header">
+
+			  </div>
+			  -->
+			  <div class="card-body">
+			  		<form th:action="@{/login}" method="post">
+				   		<div class="mb-2">
+							<label for="usuario" class="form-label">Usuário/Email</label>
+							<input class="form-control"  name="username" id="usuario" placeholder="Insira o seu nome de usuário ou email...">
+						</div>
+						  
+				   		<div class="mb-2">
+							<label for="senha" class="form-label">Senha</label>
+							<input type="password" class="form-control" name="password" id="senha" placeholder="Insira a sua senha">				
+						</div>
+											
+						<input class="btn btn-primary" type="submit" value="Login">
+					</form>
+					
+			  </div>
+			</div>
+		</div>
+		
 	</body>
 </html>
