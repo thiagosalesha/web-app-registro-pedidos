@@ -2,6 +2,7 @@ package br.com.salesha.mvc.mudi;
 
 import javax.sql.DataSource;
 
+import org.apache.catalina.startup.UserDatabase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.context.annotation.Bean;
@@ -32,22 +33,30 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.and()
 			.formLogin(form -> form
 					.loginPage("/login")
-					.defaultSuccessUrl("/home", true)
+					.defaultSuccessUrl("/home", true) //redireciona após o login com sucesso
 					.permitAll()
 					)
-			.logout(logout -> logout.logoutUrl("/logout"));
+			.logout(logout -> logout.logoutUrl("/logout")); // determina a funcionalidade logout
 		
 	}
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		
-
-		
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(); // método de criptografia de senha
+		/*
+		//Adicionar usuário
+		UserDetails user = User
+				.builder()
+				.username("")
+				.password(encoder.encode(""))
+				.roles("")
+				.build();
+		*/
 		auth.jdbcAuthentication()
 		.dataSource(dataSource)
-		.passwordEncoder(encoder);
+		.passwordEncoder(encoder); 
+		//.whithUsers(user); //para adicionar o usuário criado anteriormente;
+		
 	}
 	
  }
