@@ -30,7 +30,7 @@
 			    Formulário de Cadastro
 			  </div>
 			  <div class="card-body">
-			  		<form th:object="${cadastroNovoProd}" action="/pedido/cadastrar" method="post">
+			  		<form th:action="@{/pedido/cadastrar}" th:object="${cadastroNovoProd}"  method="post">
 				   		<div class="mb-2">
 							<label for="nmProd" class="form-label">Nome do Produto</label>
 							<input th:field="*{nmProd}" th:errorclass="is-invalid" class="form-control"  name="nmProd" id="nmProd" placeholder="Insira o nome do produto...">

@@ -18,6 +18,10 @@ public class User {
 	private String password;
 	private Boolean enabled;
 	
+	
+	//Anotação de JPA para realizar o relacionamento
+	//Cascade -> as alterações devem ser replicadas nos relacionamentos;
+	//fetch -> Quando "LAZY" evita que o hibernate puxe todos os relacionamentos, a não ser que seja explicitamente pedido
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
 	private List<Pedido> pedido;
 
