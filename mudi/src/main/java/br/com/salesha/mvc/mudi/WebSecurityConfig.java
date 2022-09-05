@@ -33,7 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.and()
 			.formLogin(form -> form
 					.loginPage("/login")
-					.defaultSuccessUrl("/home", true) //redireciona após o login com sucesso
+					.defaultSuccessUrl("/usuario/pedido", true) //redireciona após o login com sucesso
 					.permitAll()
 					)
 			.logout(logout -> logout.logoutUrl("/logout")); // determina a funcionalidade logout
