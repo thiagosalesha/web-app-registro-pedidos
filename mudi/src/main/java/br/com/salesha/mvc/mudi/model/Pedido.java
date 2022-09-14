@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.ManyToAny;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Pedido {
 	
@@ -30,6 +32,7 @@ public class Pedido {
 	@Enumerated(EnumType.STRING)
 	private StatusPedido statusPedido;
 	
+	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	private User user;
 	

@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -22,6 +24,8 @@ public class User {
 	//Anotação de JPA para realizar o relacionamento
 	//Cascade -> as alterações devem ser replicadas nos relacionamentos;
 	//fetch -> Quando "LAZY" evita que o hibernate puxe todos os relacionamentos, a não ser que seja explicitamente pedido
+
+	@JsonManagedReference
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
 	private List<Pedido> pedido;
 
