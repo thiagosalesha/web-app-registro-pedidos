@@ -31,7 +31,7 @@ public class HomeController {
 	public String home(Model model) {
 		
 		//principal.getName() -> método para buscar o nome do usuário atualmente logado	
-		List<Pedido> lista = pedidoRepository.findAllByStatusPedido(StatusPedido.ENTREGUE);
+		List<Pedido> lista = pedidoRepository.findAll();
 		model.addAttribute("lista", lista);
 		return "home";
 	}
