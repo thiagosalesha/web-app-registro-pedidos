@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,8 +32,14 @@ public class HomeController {
 	@GetMapping
 	public String home(Model model) {
 		
+		//Implementando ordenação via spring data
+		Sort sort = Sort.by("dataEntrega").ascending();
+		
+		//Implementando limite de elementos por página com ordenação
+		PageRequest paginacao = PageRequest.of(0, 10, sort);
+		
 		//principal.getName() -> método para buscar o nome do usuário atualmente logado	
-		List<Pedido> lista = pedidoRepository.findAll();
+		List<Pedido> lista = pedidoRepository.findAllByStatusPedido(StatusPedido.AGUARDANDO, paginacao);
 		model.addAttribute("lista", lista);
 		return "home";
 	}

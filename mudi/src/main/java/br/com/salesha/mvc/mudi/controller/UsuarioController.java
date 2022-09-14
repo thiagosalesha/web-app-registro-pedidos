@@ -34,7 +34,7 @@ public class UsuarioController {
 		return "usuario/home";
 	}
 	
-	@GetMapping("usuario/pedido/{status}")
+	@GetMapping("pedido/{status}")
 	public String aguardando(@PathVariable("status") String status, Model model, Principal principal) {
 
 		List<Pedido> lista = pedidoRepository.findByStatusPedidoEUsuario(StatusPedido.valueOf(status.toUpperCase()), principal.getName());
