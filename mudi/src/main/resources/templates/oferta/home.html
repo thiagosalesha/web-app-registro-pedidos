@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="~{base :: head('Início')}">
+</head>
+<body>
+		<div th:replace="~{base :: logo}"></div>
+		<div class="container py-2">
+				<div class="row align-items-md-stretch">
+					<div class="col-md-12">		
+						<div class="h-100 p-5 text-bg-dark rounded-3">
+							<h2>Pedidos Cadastrados</h2>
+						</div>
+					</div>
+				</div>
+				
+									
+<!-- 					<nav class="navbar bg-light rounded-3"> -->
+<!-- 					  <form class="container-fluid justify-content-end"> -->
+<!-- 					   	<div> -->
+<!-- 					  		<a class="btn btn-primary" href="/pedido/formulario" role="button">Novo</a> -->
+<!-- 					  	</div> -->
+<!-- 					  </form> -->
+<!-- 					</nav>	 -->
+		</div>	
+		
+		<div class="container p-3">
+			<div class="card mb-3" th:each="pedido : ${lista}">					
+						<th:block th:switch=${pedido.statusPedido.name()}>
+							<div th:case="'APROVADO'" class="card-header alert alert-success"  th:text="${pedido.nomeProd}"></div>
+							<div th:case="'ENTREGUE'" class="card-header alert alert-primary"  th:text="${pedido.nomeProd}"></div>
+							<div th:case="'AGUARDANDO'" class="card-header alert alert-warning"  th:text="${pedido.nomeProd}"></div>
+						</th:block>
+						<div class="card-body">
+							<div class="row g-5">
+								<div class="col-md-8">
+										<div class="row mb-3">
+											<div class="col-md-3">
+												Valor: <span th:text="${'R$ ' + #numbers.formatDecimal(pedido.valor,3,'POINT',2,'COMMA')}">200,99</span>
+											</div>
+												
+											<div class="col-md-9">
+												Data da Entrega: <span th:text="${#temporals.format(pedido.dataEntrega, 'dd/MM/yyyy')}"></span>
+											</div>
+										</div>
+										
+										<div class="mb-2">
+											<label for="urlProd" class="form-label">Produto</label>
+											<input th:value="${pedido.urlProd}" class="form-control" id="urlProd" placeholder="Insira a url do produto...">
+										</div>
+										
+										<div class="mb-3">
+											<label for="descProd" class="form-label">Descrição</label>
+											<textarea class="form-control" id="descProd" th:text="${pedido.descProd}"></textarea>							
+										</div>
+								</div>	
+									
+							    
+							    
+							    <div class="col-md-4">
+							    	<div class="card p-3">
+							      		<img th:src="${pedido.urlImg}" src="" class="img-fluid rounded-start" alt="imagem do produto">
+							    	</div>	
+							    </div>
+						   		
+						   </div>
+						</div>
+					</div>
+			</div>
+</html>
