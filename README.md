@@ -11,6 +11,9 @@ Nesse projeto foi implementado o seguinte:
 + Bootstrap
 + Thymeleaf
 + Bean Validation
++ Vue.js
++ AJAX
+
 
 + Spring Data
     - MariaDB
@@ -20,6 +23,8 @@ Nesse projeto foi implementado o seguinte:
 + Spring Security
     - Autenticação do Usuário;
     - Criptografia do password para registrar em BD;
+    
+
     
 + Ordenação
 + Paginação
