@@ -12,7 +12,7 @@
 
 
 <div th:fragment="logo" class="">
-	<div class="px-3 py-4 text-bg-dark logo-container mb-1 p-3 row">
+	<div class="px-3 py-4 text-bg-dark logo-container mb-1 p-3">
 		<div class="col d-flex justify-content-between">
 			<span class="logo ml-2" style="font-family: 'Handlee', cursive; 
 			color: #FFFFFF; font-size: 35px">mudi</span>
@@ -32,7 +32,7 @@
 		</div>
 	</div>
 			
-		<div class="row mb-2" sec:authorize="isAuthenticated()">
+		<div class="mb-2" sec:authorize="isAuthenticated()">
 			<div class="col">
 				<nav class="nav">
 					<a class="nav-link" th:href="@{/home}">Home</a> 
