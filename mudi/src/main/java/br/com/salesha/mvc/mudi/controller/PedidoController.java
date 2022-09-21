@@ -32,7 +32,6 @@ public class PedidoController {
 	@PostMapping("pedido/cadastrar")
 	public String cadastrar(@Valid CadastroNovoProd cadastro, BindingResult result) {
 		if(result.hasErrors()) {
-			System.out.println("Entrou em hasErrors");
 			return "pedido/formulario";
 		}
 

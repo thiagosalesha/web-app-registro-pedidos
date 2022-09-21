@@ -6,6 +6,9 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 import br.com.salesha.mvc.mudi.model.Oferta;
 
 public class RequisicaoNovaOferta {
@@ -14,7 +17,12 @@ public class RequisicaoNovaOferta {
 	
 	private int pedidoId;
 	
+	@Pattern (regexp = "^\\d+(\\.\\d+{2})?$") //adicionando um padrão para validação 
+	@NotNull
 	private String valor;
+	
+	@Pattern(regexp = "^\\d{2}/\\d{2}/\\d{4}$")
+	@NotNull
 	private String dataDaEntrega;
 	private String comentario;
 	
