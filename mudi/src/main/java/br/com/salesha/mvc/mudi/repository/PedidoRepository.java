@@ -14,7 +14,7 @@ import br.com.salesha.mvc.mudi.model.Pedido;
 import br.com.salesha.mvc.mudi.model.StatusPedido;
 
 @Repository
-public interface PedidoRepository extends JpaRepository<Pedido, Long> {
+public interface PedidoRepository extends JpaRepository<Pedido, Integer> {
 	
 	List<Pedido> findByStatusPedido(StatusPedido aguardando);
 	

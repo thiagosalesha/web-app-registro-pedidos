@@ -12,17 +12,17 @@ public class RequisicaoNovaOferta {
 	
 	private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	
-	private Long pedidoId;
+	private int pedidoId;
 	
 	private String valor;
 	private String dataDaEntrega;
 	private String comentario;
 	
 	
-	public Long getPedidoId() {
+	public int getPedidoId() {
 		return pedidoId;
 	}
-	public void setPedidoId(Long pedidoId) {
+	public void setPedidoId(int pedidoId) {
 		this.pedidoId = pedidoId;
 	}
 	public String getValor() {

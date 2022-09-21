@@ -30,15 +30,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 			.authorizeRequests()
 			.antMatchers("/home/**")
-			.permitAll()
+				.permitAll()
 			.anyRequest()
-			.authenticated()
+				.authenticated()
 			.and()
 			.formLogin(form -> form
 					.loginPage("/login")
 					.defaultSuccessUrl("/usuario/pedido", true) //redireciona após o login com sucesso
 					.permitAll()
 					)
+			.csrf().disable() // deixa de dar o erro 403 ao enviar oferta
 			.logout(logout -> logout.logoutUrl("/logout")); // determina a funcionalidade logout
 		
 	}

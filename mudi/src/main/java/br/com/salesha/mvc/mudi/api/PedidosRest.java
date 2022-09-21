@@ -24,7 +24,7 @@ public class PedidosRest {
 	@GetMapping("id")
 	public List<Pedido> getPedidosPorId() {
 		
-		Sort sort =  Sort.by("id").descending();
+		Sort sort =  Sort.by("valor").descending();
 		PageRequest paginacao = PageRequest.of(0, 10, sort);
 		return pedidoRepo.findAllByStatusPedido(StatusPedido.AGUARDANDO, paginacao);
 	}

@@ -10,24 +10,27 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Oferta {
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private Long id;
+	private int id;
 	private BigDecimal valor;
 	private LocalDate dataDaEntrega;
 	private String comentario;
 	
+	@JsonBackReference
 	@ManyToOne (fetch = FetchType.LAZY)
 	private Pedido pedido;
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(int pedidoId) {
+		this.id = pedidoId;
 	}
 
 	public BigDecimal getValor() {

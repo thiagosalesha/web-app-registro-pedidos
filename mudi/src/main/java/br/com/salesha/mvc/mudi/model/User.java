@@ -20,8 +20,8 @@ public class User {
 	private String password;
 	private Boolean enabled;
 	
-	
-	//Anotação de JPA para realizar o relacionamento
+	//Anotação Json para evitar loop por causa dos relacioanmentos (ex.: pedido contém oferta, oferta contém pedido)
+	//Anotação de JPA para realizar o relacionamento (@OneToMany)
 	//Cascade -> as alterações devem ser replicadas nos relacionamentos;
 	//fetch -> Quando "LAZY" evita que o hibernate puxe todos os relacionamentos, a não ser que seja explicitamente pedido
 
