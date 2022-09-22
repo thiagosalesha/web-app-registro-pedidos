@@ -17,12 +17,12 @@ public class RequisicaoNovaOferta {
 	
 	private int pedidoId;
 	
-	@Pattern (regexp = "^\\d+(\\.\\d+{2})?$") //adicionando um padrão para validação 
-	@NotNull
+	@Pattern (regexp = "^\\d+(\\.\\d+{2})?$", message = "Não deve ser nulo") //adicionando um padrão para validação 
+	@NotNull(message = "Não deve ser nulo")
 	private String valor;
 	
-	@Pattern(regexp = "^\\d{2}/\\d{2}/\\d{4}$")
-	@NotNull
+	@Pattern(regexp = "^\\d{2}/\\d{2}/\\d{4}$", message = "Não deve ser nulo")
+	@NotNull(message = "Não deve ser nulo")
 	private String dataDaEntrega;
 	private String comentario;
 	

@@ -34,9 +34,21 @@
 						</div>
 
 						<div class="row mt-3">
-							<div class="col-md-5">Valor: <input class="form-control" v-model="pedido.valor" /></div>
+							<div class="col-md-5">
+								Valor: <input class="form-control"  v-bind:class="{'is-invalid' : pedido.erros.valor !== ''}"
+								 v-model="pedido.valor" />
+								<div v-if="pedido.erros.valor" class="invalid-feedback">
+									{{pedido.erros.valor}}
+								</div>
+							</div>
 
-							<div class="col-md-7">Data da Entrega: <input class="form-control" v-model="pedido.dataEntrega" /></div>
+							<div class="col-md-7">
+								Data da Entrega: <input class="form-control" v-bind:class="{'is-invalid' : pedido.erros.dataDaEntrega !== ''}" 
+								v-model="pedido.dataEntrega" />
+								<div v-if="pedido.erros.dataDaEntrega" class="invalid-feedback">
+									{{pedido.erros.dataDaEntrega}}
+								</div>
+							</div>
 
 							<div class="mt-2">
 								<label for="comentProd" class="form-label">Comentário</label>
@@ -60,22 +72,29 @@
 				<script type="application/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 				<script type="application/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	<script type="application/javascript">
-					function onLoad() {
+					function onLoad() { // ao carregar o body
 						var app = new Vue({
-							  el: '#ofertas',
-							  data: {
-							    pedidos: []
+							  el: '#ofertas', //elemento "pai "que recebe os dados
+							  data: { //dados
+							    pedidos: [] //array (nome do atributo pedidos)
 							  }, 
 							  mounted () {
 								    axios
 								      .get('http://localhost:9500/api/pedidos/id')
 								      .then(response => {
-								    		response.data.forEach(pedido => pedido.ofertaEnviada = false)  
-								    	  	this.pedidos = response.data
-								    		  })
+								    		response.data.forEach(pedido => {
+								    			pedido.ofertaEnviada = false
+								    			pedido.erros = {
+								    					valor: '',
+								    					dataDaEntrega: ""
+								    				}
+								    			})	
+								    		  this.pedidos = response.data;
+								      })
 								  },
 							methods: {
 								enviarOferta: function(pedido) {
+		
 									axios
 								      .post('http://localhost:9500/api/ofertas', {
 								    	  pedidoId: pedido.id,
@@ -83,10 +102,15 @@
 								    	  dataDaEntrega: pedido.dataEntrega,
 								    	  comentario: pedido.comentario
 								      })
-								      .then(response => pedido.ofertaEnviada = true);
+								      .then(response => pedido.ofertaEnviada = true)
+								      .catch(error => { 
+								    	  error.response.data.errors.forEach(error => {
+								    		  pedido.erros[error.field] = error.defaultMessage;
+								    	  })
+								      })
 								}
 							}
-							});
+						});
 					}
 				</script>
 				
