@@ -1,4 +1,4 @@
-# thiago-sales-spring
+# Web APP para registro de pedidos 
 Projeto do Curso da Alura - Spring MVC
 
 Sobre o projeto:
